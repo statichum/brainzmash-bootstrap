@@ -2,7 +2,7 @@ volumes:
   lmdconfig:
     driver_opts:
       type: none
-      device: /docker/musicbrainz-docker/volumes/lmdconfig
+      device: /opt/docker/musicbrainz-docker/volumes/lmdconfig
       o: bind
     driver: local
 
