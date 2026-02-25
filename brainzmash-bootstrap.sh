@@ -2,7 +2,7 @@
 
 set -e
 
-BOOTSTRAP_REPO="https://github.com/yourname/brainzmash-bootstrap.git"
+BOOTSTRAP_REPO="https://github.com/statichum/brainzmash-bootstrap.git"
 BOOTSTRAP_TMP=".brainzmash-bootstrap-tmp"
 
 echo "Ensure we are in musicbrainz-docker root"
