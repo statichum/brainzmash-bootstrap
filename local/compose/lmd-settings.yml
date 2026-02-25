@@ -1,0 +1,47 @@
+volumes:
+  lmdconfig:
+    driver_opts:
+      type: none
+      device: /docker/musicbrainz-docker/volumes/lmdconfig
+      o: bind
+    driver: local
+
+services:
+  lmd:
+    image: statichum/brainzmash-hearring-aid:latest
+    ports:
+      - 5001:5001
+    environment:
+      DEBUG: false
+      PRODUCTION: false
+      USE_CACHE: true
+      ENABLE_STATS: false
+      ROOT_PATH: ""
+      IMAGE_CACHE_HOST: "theaudiodb.com"
+      EXTERNAL_TIMEOUT: 1000
+      INVALIDATE_APIKEY: ""
+      REDIS_HOST: "redis"
+      REDIS_PORT: 6379
+      FANART_KEY: "xxxxxxxxxxxxxxxxxxx"        # Replace with your own key
+      PROVIDERS__FANARTTVPROVIDER__0__0: "xxxxxxxxxxxxxxxxxxx"  # Replace with your own key
+      SPOTIFY_ID: "xxxxxxxxxxxxxxxxxxx"            # Replace with your own key
+      SPOTIFY_SECRET: "xxxxxxxxxxxxxxxxxxx"        # Replace with your own key
+      SPOTIFY_REDIRECT_URL: "http://192.168.0.2"   # set your host_ip
+      PROVIDERS__SPOTIFYPROVIDER__1__CLIENT_ID: "xxxxxxxxxxxxxxxxxxx"    # Replace with your own key
+      PROVIDERS__SPOTIFYPROVIDER__1__CLIENT_SECRET: "xxxxxxxxxxxxxxxxxxx" # Replace with your own key
+      PROVIDERS__SPOTIFYAUTHPROVIDER__1__CLIENT_ID: "xxxxxxxxxxxxxxxxxxx" # Replace with your own key
+      PROVIDERS__SPOTIFYAUTHPROVIDER__1__CLIENT_SECRET: "xxxxxxxxxxxxxxxxxxx" # Replace with your own key
+      PROVIDERS__SPOTIFYAUTHPROVIDER__1__REDIRECT_URI: "http://192.168.0.2"   # set your host_ip
+      TADB_KEY: "2"    # Default, may need your own key for full functionality
+      PROVIDERS__THEAUDIODBPROVIDER__0__0: "123"    # Default, may need your own key for full functionality
+      LASTFM_KEY: "xxxxxxxxxxxxxxxxxxx"   # Replace with your own key
+      LASTFM_SECRET: "xxxxxxxxxxxxxxxxxxx" # Replace with your own key
+      PROVIDERS__SOLRSEARCHPROVIDER__1__SEARCH_SERVER: "http://search:8983/solr"
+    restart: unless-stopped
+    volumes:
+      - lmdconfig:/config
+    depends_on:
+      - db
+      - mq
+      - search
+      - redis

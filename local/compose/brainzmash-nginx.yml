@@ -1,0 +1,11 @@
+services:
+  musicbrainz-docker-brainzmash-nginx:
+    container_name: musicbrainz-docker-brainzmash-nginx
+    image: nginx:stable
+    ports:
+      - "5002:80"
+    volumes:
+      - ./brainzmash/nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - lmd
+    restart: unless-stopped

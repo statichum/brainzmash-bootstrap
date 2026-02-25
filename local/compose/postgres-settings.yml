@@ -1,0 +1,14 @@
+services:
+  musicbrainz:
+    environment:
+      POSTGRES_USER: "abc"
+      POSTGRES_PASSWORD: "abc"
+      MUSICBRAINZ_WEB_SERVER_HOST: "HOST_IP"  # Replace with your host IP
+  db:
+    environment:
+      POSTGRES_USER: "abc"
+      POSTGRES_PASSWORD: "abc"
+  indexer:
+    environment:
+      POSTGRES_USER: "abc"
+      POSTGRES_PASSWORD: "abc"

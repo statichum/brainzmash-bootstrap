@@ -1,0 +1,7 @@
+services:
+  db:
+    shm_size: "4GB"
+    command: postgres -c "shared_buffers=8GB" -c "shared_preload_libraries=pg_amqp.so"
+  search:
+    environment:
+      - SOLR_HEAP=4g
