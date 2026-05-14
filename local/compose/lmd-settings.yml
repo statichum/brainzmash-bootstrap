@@ -20,7 +20,9 @@ services:
       IMAGE_CACHE_HOST: "theaudiodb.com"
       EXTERNAL_TIMEOUT: 1000
       INVALIDATE_APIKEY: ""
-      REDIS_HOST: "redis"
+      PROVIDERS__MUSICBRAINZDBPROVIDER__1__DB_USER: "musicbrainz"
+      PROVIDERS__MUSICBRAINZDBPROVIDER__1__DB_PASSWORD: "musicbrainz"
+      REDIS_HOST: "valkey"
       REDIS_PORT: 6379
       FANART_KEY: "xxxxxxxxxxxxxxxxxxx"        # Replace with your own key
       PROVIDERS__FANARTTVPROVIDER__0__0: "xxxxxxxxxxxxxxxxxxx"  # Replace with your own key
@@ -42,6 +44,5 @@ services:
       - lmdconfig:/config
     depends_on:
       - db
-      - mq
       - search
-      - redis
+      - valkey
