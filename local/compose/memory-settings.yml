@@ -4,4 +4,4 @@ services:
     command: postgres -c "shared_buffers=2GB"
   search:
     environment:
-      - SOLR_HEAP=2g
+      - SOLR_HEAP=3g
